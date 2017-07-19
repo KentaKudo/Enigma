@@ -162,6 +162,26 @@ let ETW_K: Cipher = { token in
 let swissK = [I_K, II_K, III_K, UKW_K, ETW_K]
 let plugboard: Cipher = { token in
     switch token {
+    case .A: return .D
+    case .B: return .P
+    case .C: return .L
+    case .D: return .A
+    case .E: return .X
+    case .H: return .M
+    case .J: return .S
+    case .K: return .O
+    case .L: return .C
+    case .M: return .H
+    case .N: return .Z
+    case .O: return .K
+    case .P: return .B
+    case .Q: return .Y
+    case .S: return .J
+    case .U: return .W
+    case .W: return .U
+    case .X: return .E
+    case .Y: return .Q
+    case .Z: return .N
     default:
         return token
     }
@@ -169,7 +189,7 @@ let plugboard: Cipher = { token in
 
 var enigma = Enigma(rotor0: swissK[0], rotor1: swissK[1], rotor2: swissK[2], plugboard: plugboard, key: (.A, .A, .A))
 let message = "HELLOWORLD"
-let message2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let message2 = "AAAAAAAAAA"
 let ciphered = enigma.cipher(message)
 let ciphered2 = enigma.cipher(message2)
 
